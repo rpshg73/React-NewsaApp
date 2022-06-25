@@ -1,8 +1,7 @@
 import React from 'react'
 
-export default class NewsItem extends React.Component {
-	render() {
-		let {title,desc,image,newsUrl,author,date,source} = this.props;
+const NewsItem = (props) => {
+		let {title,desc,image,newsUrl,author,date,source} = props;
 		return (
 			<div>
 				<div className="card" style={{width: '18rem'}}>
@@ -17,5 +16,7 @@ export default class NewsItem extends React.Component {
 				</div>
 			</div>
 		)
-	}
+	
 }
+
+export default NewsItem;
