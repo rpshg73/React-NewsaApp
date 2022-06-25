@@ -1,8 +1,9 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import NewsItem from './NewsItem'
+import React from 'react';
+import PropTypes from 'prop-types';
+import NewsItem from './NewsItem';
 import Spinner from './Spinner';
 import InfiniteScroll from "react-infinite-scroll-component";
+// import LoadingBar from 'react-top-loading-bar';
 
 export default class News extends React.Component {
 	capitalizeFirstLetter = (string) => {
@@ -11,7 +12,7 @@ export default class News extends React.Component {
 
 	static defaultProps = {
 		country: 'in',
-		category: 'entertainment',
+		category: 'general',
 		pageSize: 5
 	}
 
@@ -33,7 +34,7 @@ export default class News extends React.Component {
 	}
 
 	async updateNews() {
-		let url = `https://newsapi.org/v2/top-headlines?country=${this.props.country}&pageSize=${this.props.pageSize}&category=${this.props.category}&page=${this.state.page}&apiKey=0f27f7d55fbd48828bd81517cd58917d`;
+		let url = `https://newsapi.org/v2/top-headlines?country=${this.props.country}&pageSize=${this.props.pageSize}&category=${this.props.category}&page=${this.state.page}&apiKey=${this.props.apiKey}`;
 		this.setState({ loading: true });
 		let data = await fetch(url);  // fetchapi starts a request and returns a promise
 		let parsedData = await data.json();
@@ -50,7 +51,7 @@ export default class News extends React.Component {
 
 	fetchMoreData = async() =>{
 		this.setState({page:this.state.page+1});
-		let url = `https://newsapi.org/v2/top-headlines?country=${this.props.country}&pageSize=${this.props.pageSize}&category=${this.props.category}&page=${this.state.page}&apiKey=0f27f7d55fbd48828bd81517cd58917d`;
+		let url = `https://newsapi.org/v2/top-headlines?country=${this.props.country}&pageSize=${this.props.pageSize}&category=${this.props.category}&page=${this.state.page}&apiKey=${this.props.apiKey}`;
 		this.setState({ loading: true });
 		let data = await fetch(url);  // fetchapi starts a request and returns a promise
 		let parsedData = await data.json();
