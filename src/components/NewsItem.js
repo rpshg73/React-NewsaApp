@@ -1,4 +1,5 @@
-import React from 'react'
+import React from 'react';
+import { Link } from 'react-router-dom';
 
 const NewsItem = (props) => {
 		let {title,desc,image,newsUrl,author,date,source} = props;
@@ -11,7 +12,7 @@ const NewsItem = (props) => {
 						<h5 className="card-title">{title} ...</h5>
 						<p className="card-text">{desc} ....</p>
 						<p className="card-text"><small className="text-danger">By {author ? author : 'Unknown'} on {new Date(date).toGMTString()}</small></p>
-						<a href={newsUrl} target="_blank" className="btn btn-primary">Read More</a>
+						<Link to={newsUrl} target="_blank" className="btn btn-primary">Read More</Link>
 					</div>
 				</div>
 			</div>
